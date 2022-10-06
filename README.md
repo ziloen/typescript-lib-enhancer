@@ -1,6 +1,22 @@
 # Enhance TypeScript `lib.*.d.ts`
 
-Enhance`Object.hasOwn`，`lib.2022.d.ts`
+## Usage
+
+Install and add to `tsconfig.json` types
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "typescript-lib-enhancer"
+    ]
+  }
+}
+```
+> this package includes [`typed-query-selector/strict`](https://github.com/g-plane/typed-query-selector) to enhance `document.querySelector`
+
+## Features
+
+### Enhance`Object.hasOwn` to narrow types just like `in`
 ```ts
 declare const value: { a: number } | { b: number }
 
