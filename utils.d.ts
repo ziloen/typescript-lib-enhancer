@@ -15,3 +15,10 @@ export type ExtractByKeys<T, K extends keyof any> =
      ? R
      : never
    : never
+
+export type NotFn<T> = T extends Function ? never : T
+
+// TODO:
+export type NotFnDeep<T> = {
+  [K in keyof T]: NotFn<T>
+}
