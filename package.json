@@ -28,6 +28,9 @@
     "extends": "@ziloen",
     "parserOptions": {
       "project": "./tsconfig.json"
+    },
+    "rules": {
+      "prefer-object-has-own": "off"
     }
   }
 }

@@ -10,6 +10,11 @@
     "exactOptionalPropertyTypes": true,
     "skipLibCheck": false,
     "types": [],
-    "typeRoots": []
+    "typeRoots": [],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ]
   }
 }

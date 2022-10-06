@@ -11,3 +11,10 @@ if (Object.hasOwn(v, 'a')) {
   // @ts-expect-error v.a should not exist
   v.a
 }
+
+
+if (Reflect.has(v, 'a')) {
+  v.a
+} else {
+  v.b
+}

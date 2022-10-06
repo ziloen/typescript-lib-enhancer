@@ -7,9 +7,15 @@ declare global {
      * @param o An object.
      * @param v A property name.
      */
-    hasOwn<T extends Record<keyof any, any>, K extends keyof any>(
-      o: T,
-      v: K
-    ): o is ExtractByKeys<T, K>;
+    hasOwn<T extends Record<keyof any, any>, K extends keyof any>(o: T, v: K): o is ExtractByKeys<T, K>
+  }
+
+  namespace Reflect {
+    /**
+     * Equivalent to `propertyKey in target`.
+     * @param target Object that contains the property on itself or in its prototype chain.
+     * @param propertyKey Name of the property.
+     */
+    function has<T extends Record<keyof any, any>, K extends keyof any>(target: T, propertyKey: K): target is ExtractByKeys<T, K>
   }
 }
