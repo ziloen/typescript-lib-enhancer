@@ -11,6 +11,7 @@
     "skipLibCheck": false,
     "types": [],
     "typeRoots": [],
+    "moduleResolution": "Node",
     "lib": [
       "DOM",
       "DOM.Iterable",

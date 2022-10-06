@@ -1,3 +1,5 @@
+type _ = any
+
 /**
  * Extract from T those types that has K keys
  * ```ts
