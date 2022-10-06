@@ -1,5 +1,5 @@
 /**
- * 从联合类型中挑选出有 K 键值的项
+ * Extract from T those types that has K keys
  * ```ts
  * type A = { a: _ } | { b: _ } | { c: _ }
  *
