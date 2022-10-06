@@ -6,6 +6,7 @@
     "typescript",
     "types"
   ],
+  "homepage": "https://github.com/ziloen/typescript-lib-enhancer",
   "author": "ziloen",
   "main": "shim.d.ts",
   "types": "shim.d.ts",
