@@ -10,15 +10,13 @@ type _ = any
  * ```
  */
 export type ExtractByKeys<T, K extends keyof any> =
- T extends infer R
-   ? K extends keyof R
-     ? R
-     : never
-   : never
+  T extends infer R
+  ? K extends keyof R
+  ? R
+  : never
+  : never
 
 export type NotFn<T> = T extends Function ? never : T
 
 // TODO:
-export type NotFnDeep<T> = {
-  [K in keyof T]: NotFn<T>
-}
+export type NotFnDeep<T> = T extends string | number | undefined | null ? T : never

@@ -13,20 +13,28 @@
   "sideEffects": false,
   "files": [
     "lib.dom.d.ts",
-    "lib.es.d.ts"
+    "lib.es.d.ts",
+    "shim.d.ts"
   ],
   "scripts": {
     "release": "bumpp package.json --commit --no-push && pnpm -r publish --access public"
   },
   "dependencies": {
-    "@ziloen/eslint-config": "^0.0.65",
     "bumpp": "^8.2.1",
     "typed-query-selector": "^2.8.0",
     "typescript": "^4.8.4"
   },
+  "devDependencies": {
+    "@ziloen/eslint-config": "^0.0.65",
+    "@ziloen/eslint-config-format": "^0.0.65",
+    "eslint": "^8.24.0"
+  },
   "eslintConfig": {
     "root": true,
-    "extends": "@ziloen",
+    "extends": [
+      "@ziloen",
+      "@ziloen/eslint-config-format"
+    ],
     "parserOptions": {
       "project": "./tsconfig.json"
     },
