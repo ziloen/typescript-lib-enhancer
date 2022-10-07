@@ -12,7 +12,8 @@ declare global {
 
   namespace Reflect {
     // `Reflect.has` will check prototype chain
-    /**
+    // Object.create(null) has no prototype
+    /** 
      * Equivalent to `propertyKey in target`.
      * @param target Object that contains the property on itself or in its prototype chain.
      * @param propertyKey Name of the property.

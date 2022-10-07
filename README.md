@@ -35,6 +35,7 @@ if (Object.hasOwn(value, 'a')) {
 }
 ```
 ## TODO
+
 - [ ] `Object.asign` type
 - [ ] `structuredClone` no functions allow
 - [ ] `Element.setAttribute` allow number as value?
