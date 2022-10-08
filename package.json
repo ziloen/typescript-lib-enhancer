@@ -14,7 +14,8 @@
   "files": [
     "lib.dom.d.ts",
     "lib.es.d.ts",
-    "shim.d.ts"
+    "shim.d.ts",
+    "utils.d.ts"
   ],
   "scripts": {
     "release": "bumpp package.json --commit --no-push && pnpm -r publish --access public",

@@ -8,6 +8,8 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "exactOptionalPropertyTypes": true,
+    "noImplicitAny": true,
+    "strictBindCallApply": true,
     "skipLibCheck": false,
     "types": [],
     "typeRoots": [],
