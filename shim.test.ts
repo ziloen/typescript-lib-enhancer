@@ -1,33 +1,40 @@
 // import "./shim"
+import type { Expect, Equal } from './utils'
+
+
+
 const v: { a: number } | { b: number } = {} as any
 
+// Test Object.hasOwn
 if (Object.hasOwn(v, 'a')) {
-  v.a
-  // @ts-expect-error v.b should not exist
-  v.b
+  type T = Expect<Equal<typeof v, { a: number }>>
 } else {
-  v.b
-  // @ts-expect-error v.a should not exist
-  v.a
+  type T = Expect<Equal<typeof v, { b: number }>>
+}
+
+if (Object.hasOwn(v, 'c')) {
+  type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
+} else {
+  type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
 }
 
 
+
+// Test Reflect.has
 if (Reflect.has(v, 'toString')) {
-  // @ts-expect-error type not narrow
-  v.a
-  // @ts-expect-error type not narrow
-  v.b
+  type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
 } else {
-  // never
-  v
+  type T = Expect<Equal<typeof v, never>>
 }
 
 if (Reflect.has(v, 'a')) {
-  v.a
-  // @ts-expect-error v.b should not exist
-  v.b
+  type T = Expect<Equal<typeof v, { a: number }>>
 } else {
-  v.b
-  // @ts-expect-error v.a should not exist
-  v.a
+  type T = Expect<Equal<typeof v, { b: number }>>
+}
+
+if (Reflect.has(v, "c")) {
+  type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
+} else {
+  type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
 }
