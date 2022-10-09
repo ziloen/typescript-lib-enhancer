@@ -38,3 +38,8 @@ if (Reflect.has(v, "c")) {
 } else {
   type T = Expect<Equal<typeof v, { a: number } | { b: number }>>
 }
+
+
+
+const cloned = structuredClone(new Promise(() => { }))
+const ccloned = structuredClone((a: string) => {})

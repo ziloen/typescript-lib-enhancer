@@ -16,13 +16,23 @@ export type ExtractByKeys<T, K extends keyof any> =
   : never
   : never
 
-export type NotFn<T> = T extends Function ? never : T
+export type KeyofUnion<T> = T extends infer R ? keyof R : never
 
-// TODO:
-export type NotFnDeep<T> = T extends string | number | undefined | null ? T : never
+export type Fn<Args extends any[] = any[], Return = any> = (...args: Args) => Return
 
+export type UnionToIntersection<U> = (U extends any ? Fn<[U]> : never) extends Fn<[infer Arg]> ? Arg : never
 
-export type KeyofUnion<T> = T extends infer R ? keyof R : never 
+export type UnionLast<T> = UnionToIntersection<T extends unknown ? Fn<[T]> : never> extends Fn<[infer A]> ? A : never
+
+/** is T a union type */
+export type IsUnion<T, U = T> =
+  T extends U
+  ? [U] extends [T]
+  ? false
+  : true
+  : never
+
+export type UnionToTuple<U, L = UnionLast<U>> = [U] extends [never] ? [] : [L, ...UnionToTuple<Exclude<U, L>>]
 
 
 // type-challenges utils 
