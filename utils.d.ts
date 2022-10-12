@@ -38,6 +38,16 @@ export type IsUnion<T, U = T> =
   : true
   : never
 
+
+export type Split<
+  Str extends string,
+  Separator extends string = '',
+  Result extends string[] = []
+> =
+  Str extends `${infer First}${Separator}${infer Rest}`
+  ? Split<Rest, Separator, [...Result, First]>
+  : [...Result, ...Str extends '' ? [] : [Str]]
+
 export type UnionToTuple<U, L = UnionLast<U>> = [U] extends [never] ? [] : [L, ...UnionToTuple<Exclude<U, L>>]
 
 

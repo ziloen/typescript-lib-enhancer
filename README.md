@@ -12,11 +12,11 @@ Install and add to `tsconfig.json` types
   }
 }
 ```
-> this package includes [`typed-query-selector/strict`](https://github.com/g-plane/typed-query-selector) to enhance `document.querySelector`
+> this package includes [`typed-query-selector/strict`](https://github.com/g-plane/typed-query-selector) to enhance `querySelector()` & `querySelectorAll()` & `closest()`
 
 ## Features
 
-### Enhance`Object.hasOwn` to narrow types just like `in`
+### Enhance`Object.hasOwn` to narrow types just like `key in obj`
 ```ts
 declare const value: { a: number } | { b: number }
 
@@ -36,7 +36,9 @@ if (Object.hasOwn(value, 'a')) {
 ```
 ## TODO
 
-- [ ] `Object.asign` type
+- [ ] ~~`Object.asign` type~~
 - [ ] `structuredClone` no functions allow
 - [ ] `Element.setAttribute` allow number as value?
-- [ ] `Object.entries`
+- [ ] `Object.entries` key type 
+- [ ] `Array.prototype.reduce` & `Array.prototype.reduceRight`
+- [x] `Object.keys`

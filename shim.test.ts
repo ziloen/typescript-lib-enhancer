@@ -106,11 +106,45 @@ import type { Expect, Equal } from './utils'
 
 
 
-// Object.entries()
+// Test Object.entries()
 {
   // preserve key type, 
   const entries = Object.entries({ a: 12, [Symbol()]: 99, 12: 33 })
+
   type TestCase = [
     Expect<Equal<typeof entries, ['a' | '12', number][]>>
+  ]
+}
+{
+  // primitive types
+  const entriesOfNumber = Object.entries(0)
+  const entriesOfString  = Object.entries("123")
+  const entriesOfSymbol= Object.entries(Symbol())
+
+  type TestCase = [
+    Expect<Equal<typeof entriesOfNumber, []>>,
+    Expect<Equal<typeof entriesOfString, [`${number}`, string][]>>,
+    Expect<Equal<typeof entriesOfString, []>>,
+  ]
+}
+
+
+
+// Test Object.keys()
+{
+  // symbol key ignored
+  const keys = Object.keys({ str: 12, 12: 99, [Symbol()]: 123 })
+  type Test = Expect<Equal<typeof keys, ("str" | "12")[]>>
+}
+{
+  // primitive types
+  const keysOfNumber = Object.keys(0)
+  const keysOfString = Object.keys("123")
+  const keysOfSymbol = Object.keys(Symbol())
+
+  type TestCase = [
+    Expect<Equal<typeof keysOfNumber, []>>,
+    Expect<Equal<typeof keysOfString, `${number}`[]>>,
+    Expect<Equal<typeof keysOfSymbol, []>>
   ]
 }
