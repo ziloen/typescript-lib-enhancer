@@ -45,8 +45,8 @@ type SimpleClonable =
   | RegExp
   | TypedArray
 
-type Test = (() => void) extends SimpleClonable ? true : false
 
+// TODO: 递归遍历对象
 type StructuredClonable<T> =
   T extends Promise<any> ? never :
   T extends Fn ? never :
@@ -60,6 +60,9 @@ type StructuredClonable<T> =
 
 
 declare global {
-  /** TODO: */
-  function structuredClone<T>(value: StructuredClonable<T>): T
+  /**
+   * Creates a [deep clone](https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy) of a given value using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
+   * @param value The object to be cloned. This can be any [structured-clonable type](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). 
+   */
+  function structuredClone<T, S extends StructuredClonable<T>>(value: T): [S] extends [never] ? never : T
 }

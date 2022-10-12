@@ -16,9 +16,15 @@ export type ExtractByKeys<T, K extends keyof any> =
   : never
   : never
 
+export type Stringable = string | number | bigint | boolean | null | undefined
+
+export type ToString<T> = T extends Stringable ? `${T}` : never
+
 export type KeyofUnion<T> = T extends infer R ? keyof R : never
 
 export type Fn<Args extends any[] = any[], Return = any> = (...args: Args) => Return
+
+export type AnyObject<Keys extends keyof any = keyof any, Value = any> = { [Key in Keys]: Value }
 
 export type UnionToIntersection<U> = (U extends any ? Fn<[U]> : never) extends Fn<[infer Arg]> ? Arg : never
 
@@ -41,3 +47,6 @@ export type Equal<X, Y> =
   (<T>() => T extends Y ? 1 : 2) ? true : false
 
 export type Expect<T extends true> = T
+
+// is is possible a shortcut for Expect<Equal<X, Y>> ? ExpectEq<X, Y>
+// export type ExpectEq<X, Y, N extends boolean = Equal<X, Y>, R extends true = N extends true ? true : true> = N

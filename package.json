@@ -18,8 +18,10 @@
     "utils.d.ts"
   ],
   "scripts": {
+    "dev": "tsc --noEmit --watch",
     "release": "bumpp package.json --commit --no-push && pnpm -r publish --access public",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "tsc --noEmit"
   },
   "dependencies": {
     "bumpp": "^8.2.1",

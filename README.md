@@ -39,3 +39,4 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Object.asign` type
 - [ ] `structuredClone` no functions allow
 - [ ] `Element.setAttribute` allow number as value?
+- [ ] `Object.entries`
