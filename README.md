@@ -41,4 +41,10 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Element.setAttribute` allow number as value?
 - [ ] `Object.entries` key type 
 - [ ] `Array.prototype.reduce` & `Array.prototype.reduceRight`
-- [x] `Object.keys`
+- [ ] `Object.keys` & `Object.entries` & `Object.values` 
+
+<!-- and more :
+  eslint plugin 
+    rule : Object.keys() & Object.entries & Object.values not allow number and Symbol
+    
+ -->

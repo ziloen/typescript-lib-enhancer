@@ -118,13 +118,13 @@ import type { Expect, Equal } from './utils'
 {
   // primitive types
   const entriesOfNumber = Object.entries(0)
-  const entriesOfString  = Object.entries("123")
-  const entriesOfSymbol= Object.entries(Symbol())
+  const entriesOfString = Object.entries("123")
+  const entriesOfSymbol = Object.entries(Symbol())
 
   type TestCase = [
     Expect<Equal<typeof entriesOfNumber, []>>,
     Expect<Equal<typeof entriesOfString, [`${number}`, string][]>>,
-    Expect<Equal<typeof entriesOfString, []>>,
+    Expect<Equal<typeof entriesOfSymbol, []>>,
   ]
 }
 
@@ -146,5 +146,26 @@ import type { Expect, Equal } from './utils'
     Expect<Equal<typeof keysOfNumber, []>>,
     Expect<Equal<typeof keysOfString, `${number}`[]>>,
     Expect<Equal<typeof keysOfSymbol, []>>
+  ]
+}
+
+
+
+// Test Object.values()
+{
+  // symbol key value ignored
+  const values = Object.values({ str: 12, 12: 99, [Symbol()]: 123 })
+  type Test = Expect<Equal<typeof values, number[]>>
+}
+{
+  // primitive types
+  const valuesOfNumber = Object.values(0)
+  const valuesOfString = Object.values("123")
+  const valuesOfSymbol = Object.values(Symbol())
+
+  type TestCase = [
+    Expect<Equal<typeof valuesOfNumber, []>>,
+    Expect<Equal<typeof valuesOfString, ["1", "2", "3"]>>,
+    Expect<Equal<typeof valuesOfSymbol, []>>
   ]
 }

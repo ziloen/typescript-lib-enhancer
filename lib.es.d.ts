@@ -15,9 +15,7 @@ declare global {
      * Returns an empty array
      * @param o number or symbol
      */
-    entries<
-      T extends number | symbol
-    >(o: T): []
+    entries(o: number | symbol | bigint): []
 
     /**
      * Returns an array of index/substring of the string
@@ -49,13 +47,27 @@ declare global {
      * Returns an empty array
      * @param o number or symbol
      */
-    keys<T extends number | symbol>(o: T): []
+    keys(o: number | symbol | bigint): []
 
     /**
      * Returns index string array
      * @param s string
      */
     keys<T extends string>(s: T): `${number}`[]
+
+
+
+    /**
+     * Returns an array of string split
+     * @param o string
+     */
+    values(o: number | symbol | bigint): []
+
+    /**
+     * Returns an array of string split
+     * @param o string
+     */
+    values<T extends string>(o: T): Split<T>
   }
 
   namespace Reflect {
