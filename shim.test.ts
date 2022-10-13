@@ -135,6 +135,25 @@ import type { Expect, Equal } from './utils'
 
 
 
+// Test Object.fromEntrires()
+{
+  {
+    // preserve key type, 
+    type KeyType = "a" | "b" | "c"
+    const obj = Object.fromEntries([
+      ['a', 12],
+      ['b', 88],
+      ['c', 92],
+    ] as [KeyType, number][])
+
+    type TestCase = [
+      Expect<Equal<typeof obj, { [k in KeyType]: number }>>
+    ]
+  }
+}
+
+
+
 // Test Object.keys()
 {
   {

@@ -41,7 +41,7 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Element.setAttribute` allow number as value?
 - [ ] `Object.entries` key type 
 - [ ] `Array.prototype.reduce` & `Array.prototype.reduceRight`
-- [ ] `Object.keys` & `Object.entries` & `Object.values` 
+- [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 
 <!-- and more :
   eslint plugin 
