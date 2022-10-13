@@ -142,14 +142,21 @@ import type { Expect, Equal } from './utils'
   {
     // preserve key type, 
     type KeyType = "a" | "b" | "c"
-    const obj = Object.fromEntries([
+    const sameValueType = Object.fromEntries([
       ['a', 12],
-      ['b', 88],
+      ['b', 90],
       ['c', 92],
-    ] as [KeyType, number][])
+    ])
+
+    const diffValueType = Object.fromEntries([
+      ['a', 12],
+      ['b', "90"],
+      ['c', Symbol()],
+    ])
 
     type TestCase = [
-      Expect<Equal<typeof obj, { [k in KeyType]: number }>>
+      Expect<Equal<typeof sameValueType, { [k in KeyType]: number }>>,
+      Expect<Equal<typeof diffValueType, { [k in KeyType]: number | string | symbol }>>,
     ]
   }
 }

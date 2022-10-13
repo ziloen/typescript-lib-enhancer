@@ -32,6 +32,8 @@ export type UnionLast<T> = UnionToIntersection<T extends unknown ? Fn<[T]> : nev
 
 export type ValueOf<T extends AnyObject> = T[keyof T]
 
+export type IterableType<T extends Iterable<any>> = T extends Iterable<infer R> ? R : never
+
 /** is T a union type */
 export type IsUnion<T, U = T> =
   T extends U

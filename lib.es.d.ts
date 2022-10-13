@@ -1,4 +1,4 @@
-import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf } from './utils'
+import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType } from './utils'
 
 declare global {
   interface ObjectConstructor {
@@ -28,7 +28,7 @@ declare global {
      * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
      */
     entries<T, O extends { [k: string]: T }, K extends string = ToString<keyof O>>(o: O): [K, O[K]][]
-    
+
     /**
      * Returns an array of key/values of the enumerable properties of an object
      * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
@@ -41,7 +41,7 @@ declare global {
      * Returns an object created by key-value entries for properties and methods
      * @param entries An iterable object that contains key-value entries for properties and methods.
      */
-    fromEntries<T = any, K extends PropertyKey = PropertyKey>(entries: Iterable<readonly [K, T]>): { [k in K]: T }
+    fromEntries<K extends PropertyKey,I extends Iterable<readonly [K, any]>, T extends IterableType<I> = IterableType<I>>(entries: I): { [Key in T[0]]: IterableType<I>[1] }
 
 
 
