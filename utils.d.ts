@@ -30,6 +30,8 @@ export type UnionToIntersection<U> = (U extends any ? Fn<[U]> : never) extends F
 
 export type UnionLast<T> = UnionToIntersection<T extends unknown ? Fn<[T]> : never> extends Fn<[infer A]> ? A : never
 
+export type ValueOf<T extends AnyObject> = T[keyof T]
+
 /** is T a union type */
 export type IsUnion<T, U = T> =
   T extends U

@@ -64,5 +64,5 @@ declare global {
    * Creates a [deep clone](https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy) of a given value using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
    * @param value The object to be cloned. This can be any [structured-clonable type](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). 
    */
-  function structuredClone<T, S extends StructuredClonable<T>>(value: T): [S] extends [never] ? never : T
+  // function structuredClone<T, S extends StructuredClonable<T>>(value: T): [S] extends [never] ? never : T
 }

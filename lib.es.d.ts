@@ -1,4 +1,4 @@
-import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split } from './utils'
+import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf } from './utils'
 
 declare global {
   interface ObjectConstructor {
@@ -23,15 +23,17 @@ declare global {
      */
     entries(s: string): [`${number}`, string][]
 
-    // /**
-    //  * Returns an array of key/values of the enumerable properties of an object
-    //  * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
-    //  */
-    // entries<
-    //   ValueType,
-    //   Target extends AnyObject | ArrayLike<ValueType>,
-    //   StringKey extends ToString<keyof Target> = ToString<keyof Target>
-    // >(o: Target): [StringKey, ValueType][]
+    /**
+     * Returns an array of key/values of the enumerable properties of an object
+     * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
+     */
+    entries<T, O extends { [k: string]: T }, K extends string = ToString<keyof O>>(o: O): [K, O[K]][]
+    
+    /**
+     * Returns an array of key/values of the enumerable properties of an object
+     * @param o Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.
+     */
+    entries<A extends ArrayLike<any>>(o: A): [`${number}`, A[number]][]
 
 
 

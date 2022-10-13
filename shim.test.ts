@@ -112,10 +112,12 @@ import type { Expect, Equal } from './utils'
 {
   {
     // preserve key type, 
-    const entries = Object.entries({ a: 12, [Symbol()]: 99, 12: 33 })
+    const objectEntries = Object.entries({ a: 12, [Symbol()]: Symbol(), 12: "33" })
+    const arrayEntries = Object.entries([12, 34])
 
     type TestCase = [
-      Expect<Equal<typeof entries, ['a' | '12', number][]>>
+      Expect<Equal<typeof objectEntries, ['a' | '12', number | string][]>>,
+      Expect<Equal<typeof arrayEntries, [`${number}`, number][]>>
     ]
   }
 
@@ -199,3 +201,6 @@ import type { Expect, Equal } from './utils'
     ]
   }
 }
+
+
+type O = { [q: symbol]: string } extends { [s: string]: any } ? true : false
