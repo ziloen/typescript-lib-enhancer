@@ -208,3 +208,15 @@ import type { Expect, Equal } from './utils'
     ]
   }
 }
+
+
+// Test `Reflect.get`
+{
+  {
+    const obj = { a: 12 }
+    const val = Reflect.get(obj, 'a')
+    type TestCase = [
+      Expect<Equal<typeof val, number>>
+    ]
+  }
+}

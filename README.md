@@ -43,6 +43,7 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Array.prototype.reduce` & `Array.prototype.reduceRight`
 - [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
+- [ ] `Reflect.get`
 
 <!-- and more :
   eslint plugin 

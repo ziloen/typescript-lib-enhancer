@@ -95,5 +95,16 @@ declare global {
      * @param propertyKey Name of the property.
      */
     function has<T extends AnyObject, K extends KeyofUnion<T>>(target: T, propertyKey: K): target is ExtractByKeys<T, K>
+
+
+
+    /**
+     * Gets the property of target, equivalent to `target[propertyKey]` when `receiver === target`.
+     * @param target Object that contains the property on itself or in its prototype chain.
+     * @param propertyKey The property name.
+     * @param receiver The reference to use as the `this` value in the getter function,
+     *        if `target[propertyKey]` is an accessor property.
+     */
+     function get<T extends object, K extends keyof T>(target: T, propertyKey: K, receiver?: any): T[K];
   }
 }
