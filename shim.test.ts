@@ -208,6 +208,3 @@ import type { Expect, Equal } from './utils'
     ]
   }
 }
-
-
-type O = { [q: symbol]: string } extends { [s: string]: any } ? true : false
