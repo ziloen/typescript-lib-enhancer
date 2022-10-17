@@ -1,5 +1,17 @@
 import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType } from './utils'
 
+type ToStringTags =
+  | "[object Undefined]"
+  | "[object Null]"
+  | "[object Number]"
+  | "[object Boolean]"
+  | "[object BigInt]"
+  | "[object String]"
+  | "[object Function]"
+  | "[object Date]"
+  | "[object Array]"
+  | "[object ArrayBuffer]"
+
 declare global {
   interface ObjectConstructor {
     /**
@@ -41,7 +53,7 @@ declare global {
      * Returns an object created by key-value entries for properties and methods
      * @param entries An iterable object that contains key-value entries for properties and methods.
      */
-    fromEntries<K extends PropertyKey,I extends Iterable<readonly [K, any]>, T extends IterableType<I> = IterableType<I>>(entries: I): { [Key in T[0]]: IterableType<I>[1] }
+    fromEntries<K extends PropertyKey, I extends Iterable<readonly [K, any]>, T extends IterableType<I> = IterableType<I>>(entries: I): { [Key in T[0]]: IterableType<I>[1] }
 
 
 
@@ -105,6 +117,11 @@ declare global {
      * @param receiver The reference to use as the `this` value in the getter function,
      *        if `target[propertyKey]` is an accessor property.
      */
-     function get<T extends object, K extends keyof T>(target: T, propertyKey: K, receiver?: any): T[K];
+    function get<T extends object, K extends keyof T>(target: T, propertyKey: K, receiver?: any): T[K]
+  }
+
+  interface Object {
+    /** Returns a string representation of an object. */
+    toString(): ToStringTags | (string & {})
   }
 }

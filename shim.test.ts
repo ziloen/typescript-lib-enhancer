@@ -220,3 +220,20 @@ import type { Expect, Equal } from './utils'
     ]
   }
 }
+
+
+
+// Test `Object.prototype.toString`
+{
+  const a = {}
+  const f = function () {
+
+  }
+
+  if (Object.prototype.toString.call(f) === '[object Function]') {
+    f
+  } else {
+    f
+  }
+
+}
