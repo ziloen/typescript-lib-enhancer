@@ -1,17 +1,17 @@
 import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType } from './utils'
 
 type ToStringTag =
-  | "[object Undefined]"
+  | "[object Array]"
+  | "[object BigInt]"
+  | "[object Boolean]"
+  | "[object Function]"
   | "[object Null]"
   | "[object Number]"
-  | "[object Boolean]"
-  | "[object BigInt]"
-  | "[object String]"
-  | "[object Function]"
   | "[object Object]"
+  | "[object String]"
+  | "[object Undefined]"
   | (string & {})
 // | "[object Date]"
-// | "[object Array]"
 // | "[object ArrayBuffer]"
 // | "[object URL]" 
 
