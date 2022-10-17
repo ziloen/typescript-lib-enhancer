@@ -1,6 +1,6 @@
 import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType } from './utils'
 
-type ToStringTags =
+type ToStringTag =
   | "[object Undefined]"
   | "[object Null]"
   | "[object Number]"
@@ -9,6 +9,7 @@ type ToStringTags =
   | "[object String]"
   | "[object Function]"
   | "[object Object]"
+  | (string & {})
 // | "[object Date]"
 // | "[object Array]"
 // | "[object ArrayBuffer]"
@@ -124,6 +125,6 @@ declare global {
 
   interface Object {
     /** Returns a string representation of an object. */
-    toString(): ToStringTags | (string & {})
+    toString(): ToStringTag
   }
 }

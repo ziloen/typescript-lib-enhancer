@@ -230,7 +230,7 @@ import type { Expect, Equal } from './utils'
 
   }
 
-  if (Object.prototype.toString.call(f) === '[object Function]') {
+  if (Object.prototype.toString.call(f) === "[object Function]") {
     f
   } else {
     f
