@@ -8,9 +8,11 @@ type ToStringTags =
   | "[object BigInt]"
   | "[object String]"
   | "[object Function]"
-  | "[object Date]"
-  | "[object Array]"
-  | "[object ArrayBuffer]"
+  | "[object Object]"
+// | "[object Date]"
+// | "[object Array]"
+// | "[object ArrayBuffer]"
+// | "[object URL]" 
 
 declare global {
   interface ObjectConstructor {
