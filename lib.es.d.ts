@@ -127,4 +127,13 @@ declare global {
     /** Returns a string representation of an object. */
     toString(): ToStringTag
   }
+
+  interface Array<T> {
+    /**
+     * Determines whether an array includes a certain element, returning true or false as appropriate.
+     * @param searchElement The element to search for.
+     */
+    includes(searchElement: T): searchElement is T
+    includes(searchElement: any): searchElement is T
+  }
 }

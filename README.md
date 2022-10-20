@@ -45,6 +45,30 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
 - [ ] `Reflect.get`
+<details>
+  <summary>`Array.includes`</summary>
+  
+  ```ts
+  enum A {
+    A1 = "A1",
+    A2 = "A2",
+    B1 = "B1"
+  }
+  const a: string = ""
+  const Akeys: A[] = Object.keys(A)    
+  // should not error
+  // error: type string not assignable to type A
+  if (Akeys.includes(a)) {
+    // a should be A
+    // a: string
+    a 
+  } else {
+    // a should still be string
+    // a: string
+    a
+  }
+  ```
+</details>
 
 <!-- and more :
   eslint plugin 
