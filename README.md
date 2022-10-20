@@ -45,8 +45,9 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
 - [ ] `Reflect.get`
+
 <details>
-  <summary><code>Array.includes</code></summary>
+  <summary><code>Array.includes()</code></summary>
   
   ```ts
   enum A {
@@ -68,6 +69,12 @@ if (Object.hasOwn(value, 'a')) {
     a
   }
   ```
+</details>
+
+<details>
+  <summary><code>Promise&lt;T, E&gt;</code></summary>
+
+  Add error generic for Promise
 </details>
 
 <!-- and more :
