@@ -237,3 +237,17 @@ import type { Expect, Equal } from './utils'
   }
 
 }
+
+
+
+// Test `Array.prototype.includes`
+{
+  const a: ("a" | 'b')[] = []
+  let c = ''
+
+  if (a.includes(c)) {
+    c
+  } else {
+    c
+  }
+}

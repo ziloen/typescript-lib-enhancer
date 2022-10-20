@@ -46,7 +46,7 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
 - [ ] `Reflect.get`
 <details>
-  <summary>`Array.includes`</summary>
+  <summary><code>Array.includes</code></summary>
   
   ```ts
   enum A {
