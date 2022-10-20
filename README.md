@@ -34,6 +34,7 @@ if (Object.hasOwn(value, 'a')) {
   value.b = 12 // OK
 }
 ```
+
 ## TODO
 
 - [ ] ~~`Object.asign` type~~
