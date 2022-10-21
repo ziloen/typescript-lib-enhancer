@@ -24,6 +24,13 @@ declare global {
      */
     hasOwn<T extends AnyObject, K extends KeyofUnion<T>>(o: T, v: K): o is ExtractByKeys<T, K>
 
+    /**
+     * If not object, always return false
+     * @param o Primitive non null value
+     * @param v A property name
+     */
+    hasOwn(o: string | number | bigint | symbol, v: string): false
+
 
 
     /**
