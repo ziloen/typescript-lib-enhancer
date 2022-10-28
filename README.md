@@ -45,6 +45,7 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
 - [ ] `Reflect.get`
+- [ ] `document.getElementById` add generic
 
 <details>
   <summary><code>Array.includes()</code></summary>

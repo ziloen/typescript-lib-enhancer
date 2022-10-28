@@ -1,4 +1,4 @@
-// import "./shim"
+/* eslint-disable unicorn/prefer-query-selector */
 import type { Expect, Equal } from './utils'
 
 
@@ -50,7 +50,7 @@ import type { Expect, Equal } from './utils'
   }
 
   // not key, do nothing
-  if (Reflect.has(objUnion, "c")) {
+  if (Reflect.has(objUnion, 'c')) {
     type Test = Expect<Equal<typeof objUnion, { a: number } | { b: number }>>
   } else {
     type Test = Expect<Equal<typeof objUnion, { a: number } | { b: number }>>
@@ -111,8 +111,8 @@ import type { Expect, Equal } from './utils'
 // Test Object.entries()
 {
   {
-    // preserve key type, 
-    const objectEntries = Object.entries({ a: 12, [Symbol()]: Symbol(), 12: "33" })
+    // preserve key type,
+    const objectEntries = Object.entries({ a: 12, [Symbol()]: Symbol(), 12: '33' })
     const arrayEntries = Object.entries([12, 34])
 
     type TestCase = [
@@ -124,7 +124,7 @@ import type { Expect, Equal } from './utils'
   {
     // primitive types
     const entriesOfNumber = Object.entries(0)
-    const entriesOfString = Object.entries("123")
+    const entriesOfString = Object.entries('123')
     const entriesOfSymbol = Object.entries(Symbol())
 
     type TestCase = [
@@ -140,18 +140,18 @@ import type { Expect, Equal } from './utils'
 // Test Object.fromEntrires()
 {
   {
-    // preserve key type, 
-    type KeyType = "a" | "b" | "c"
+    // preserve key type,
+    type KeyType = 'a' | 'b' | 'c'
     const sameValueType = Object.fromEntries([
       ['a', 12],
       ['b', 90],
-      ['c', 92],
+      ['c', 92]
     ])
 
     const diffValueType = Object.fromEntries([
       ['a', 12],
-      ['b', "90"],
-      ['c', Symbol()],
+      ['b', '90'],
+      ['c', Symbol()]
     ])
 
     type TestCase = [
@@ -168,13 +168,13 @@ import type { Expect, Equal } from './utils'
   {
     // symbol key ignored
     const keys = Object.keys({ str: 12, 12: 99, [Symbol()]: 123 })
-    type Test = Expect<Equal<typeof keys, ("str" | "12")[]>>
+    type Test = Expect<Equal<typeof keys, ('str' | '12')[]>>
   }
 
   {
     // primitive types
     const keysOfNumber = Object.keys(0)
-    const keysOfString = Object.keys("123")
+    const keysOfString = Object.keys('123')
     const keysOfSymbol = Object.keys(Symbol())
 
     type TestCase = [
@@ -198,12 +198,12 @@ import type { Expect, Equal } from './utils'
   {
     // primitive types
     const valuesOfNumber = Object.values(0)
-    const valuesOfString = Object.values("123")
+    const valuesOfString = Object.values('123')
     const valuesOfSymbol = Object.values(Symbol())
 
     type TestCase = [
       Expect<Equal<typeof valuesOfNumber, []>>,
-      Expect<Equal<typeof valuesOfString, ["1", "2", "3"]>>,
+      Expect<Equal<typeof valuesOfString, ['1', '2', '3']>>,
       Expect<Equal<typeof valuesOfSymbol, []>>
     ]
   }
@@ -230,7 +230,7 @@ import type { Expect, Equal } from './utils'
 
   }
 
-  if (Object.prototype.toString.call(f) === "[object Function]") {
+  if (Object.prototype.toString.call(f) === '[object Function]') {
     f
   } else {
     f
@@ -242,12 +242,27 @@ import type { Expect, Equal } from './utils'
 
 // Test `Array.prototype.includes`
 {
-  const a: ("a" | 'b')[] = []
-  let c = ''
+  const a: ('a' | 'b')[] = []
+  const c = ''
 
   if (a.includes(c)) {
     c
   } else {
     c
   }
+
+}
+
+
+// Test document.getElementById
+{
+  const el = document.getElementById<HTMLDivElement>('123')
+
+  const frag = document.createDocumentFragment()
+  const gl = frag.getElementById<HTMLDivElement>('123')
+
+  type TestCase = [
+    Expect<Equal<typeof el, HTMLDivElement | null>>,
+    Expect<Equal<typeof gl, HTMLDivElement | null>>,
+  ]
 }

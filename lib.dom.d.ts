@@ -65,4 +65,22 @@ declare global {
    * @param value The object to be cloned. This can be any [structured-clonable type](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). 
    */
   // function structuredClone<T, S extends StructuredClonable<T>>(value: T): [S] extends [never] ? never : T
+
+
+
+  interface Document {
+    /**
+     * Returns a reference to the first object with the specified value of the ID attribute.
+     * @param elementId String that specifies the ID value.
+     */
+    getElementById<T extends HTMLElement = HTMLElement>(elementId: string): T | null
+  }
+
+  interface DocumentFragment {
+    /**
+     * Returns a reference to the first object with the specified value of the ID attribute.
+     * @param elementId String that specifies the ID value.
+     */
+    getElementById<T extends HTMLElement = HTMLElement>(elementId: string): T | null
+  }
 }
