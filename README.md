@@ -47,6 +47,9 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Reflect.get`
 - [ ] `document.getElementById` add generic
 
+### Loose
+- [ ] `parseInt` allow number
+
 <details>
   <summary><code>Array.includes()</code></summary>
   
