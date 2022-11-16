@@ -26,7 +26,7 @@
   "dependencies": {
     "bumpp": "^8.2.1",
     "typed-query-selector": "^2.8.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "devDependencies": {
     "@ziloen/eslint-config": "^0.0.76",
