@@ -82,6 +82,7 @@ if (Object.hasOwn(value, 'a')) {
 </details>
 
 <!-- and more :
+  KeyboardEvent.keyy
   eslint plugin 
     rule : Object.keys() & Object.entries & Object.values not allow number and Symbol
     
