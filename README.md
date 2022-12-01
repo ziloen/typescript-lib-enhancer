@@ -82,7 +82,8 @@ if (Object.hasOwn(value, 'a')) {
 </details>
 
 <!-- and more :
-  KeyboardEvent.keyy
+  KeyboardEvent.key types string -> ({} & string) | 'Escape' ...
+  more detai: https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
   eslint plugin 
     rule : Object.keys() & Object.entries & Object.values not allow number and Symbol
     
