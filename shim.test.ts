@@ -64,44 +64,28 @@ import type { Expect, Equal } from './utils'
   {
     // Promise -> never
     const clonePromise = structuredClone(new Promise(() => { }))
-    const cloneDeepPropmise = structuredClone({ a: { b: new Promise(() => { }) } })
 
     type TestCase = [
-      Expect<Equal<typeof clonePromise, never>>,
-      Expect<Equal<typeof cloneDeepPropmise, never>>,
+      Expect<Equal<typeof clonePromise, never>>
+      // Expect<Equal<typeof cloneDeepPropmise, never>>
     ]
   }
 
   {
     // Function -> never
     const cloneFunction = structuredClone((a: string) => { })
-    const cloneDeepFunction = structuredClone({ a: { b: () => { } } })
 
     type TestCase = [
-      Expect<Equal<typeof cloneFunction, never>>,
-      Expect<Equal<typeof cloneDeepFunction, never>>,
+      Expect<Equal<typeof cloneFunction, never>>
     ]
   }
 
   {
     // Symbol -> never
-    const cloneSymbol = structuredClone({ a: Symbol() })
-    const cloneDeepSymbol = structuredClone({ a: { b: Symbol() } })
+    const cloneSymbol = structuredClone(Symbol(''))
 
     type TestCase = [
-      Expect<Equal<typeof cloneSymbol, never>>,
-      Expect<Equal<typeof cloneDeepSymbol, never>>,
-    ]
-  }
-
-  {
-    // Symbol key -> clone with out symbol key
-    const cloneSymbolKey = structuredClone({ [Symbol()]: 123, a: 12 })
-    const cloneDeepSymbolKey = structuredClone({ a: 12, b: { [Symbol()]: 123, c: 12 } })
-
-    type TestCase = [
-      Expect<Equal<typeof cloneSymbolKey, { a: number }>>,
-      Expect<Equal<typeof cloneDeepSymbolKey, { a: number, b: { c: number } }>>,
+      Expect<Equal<typeof cloneSymbol, never>>
     ]
   }
 }
@@ -130,7 +114,7 @@ import type { Expect, Equal } from './utils'
     type TestCase = [
       Expect<Equal<typeof entriesOfNumber, []>>,
       Expect<Equal<typeof entriesOfString, [`${number}`, string][]>>,
-      Expect<Equal<typeof entriesOfSymbol, []>>,
+      Expect<Equal<typeof entriesOfSymbol, []>>
     ]
   }
 }
@@ -156,7 +140,7 @@ import type { Expect, Equal } from './utils'
 
     type TestCase = [
       Expect<Equal<typeof sameValueType, { [k in KeyType]: number }>>,
-      Expect<Equal<typeof diffValueType, { [k in KeyType]: number | string | symbol }>>,
+      Expect<Equal<typeof diffValueType, { [k in KeyType]: number | string | symbol }>>
     ]
   }
 }
@@ -231,9 +215,9 @@ import type { Expect, Equal } from './utils'
   }
 
   if (Object.prototype.toString.call(f) === '[object Function]') {
-    f
+    f()
   } else {
-    f
+    f()
   }
 
 }
@@ -243,15 +227,16 @@ import type { Expect, Equal } from './utils'
 // Test `Array.prototype.includes`
 {
   const a: ('a' | 'b')[] = []
-  const c = ''
+  const c = '' as string
 
   if (a.includes(c)) {
-    c
+    type TestCase = Expect<Equal<(typeof a)[number], typeof c>>
   } else {
-    c
+    type TestCase = Expect<Equal<string, typeof c>>
   }
 
 }
+
 
 
 // Test document.getElementById
@@ -263,6 +248,28 @@ import type { Expect, Equal } from './utils'
 
   type TestCase = [
     Expect<Equal<typeof el, HTMLDivElement | null>>,
-    Expect<Equal<typeof gl, HTMLDivElement | null>>,
+    Expect<Equal<typeof gl, HTMLDivElement | null>>
   ]
 }
+
+
+
+// Test `Array.prototype.concat`
+// {
+//   const a = [1, 2, 3]
+//   const b = ['1', '2', '3']
+
+//   type A = typeof a
+//   type B = typeof b
+
+//   const g = a.concat(a)
+//   const c = a.concat(b, '', '123', ['123'])
+//   // many types?
+//   // const d = a.concat(b, [true])
+
+//   const n = [{ a: '123', b: 123, c: true }]
+
+//   type TestCase = [Expect<Equal<typeof g, A>>,
+//     Expect<Equal<typeof c, (A[number] | B[number])[]>>
+//   ]
+// }

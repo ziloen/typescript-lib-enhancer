@@ -42,10 +42,11 @@ if (Object.hasOwn(value, 'a')) {
 - [ ] `Element.setAttribute` allow number as value?
 - [ ] `Object.entries` key type 
 - [ ] `Array.prototype.reduce` & `Array.prototype.reduceRight`
-- [ ] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
+- [x] `Object.keys` & `Object.entries` & `Object.values` & `Object.fromEntries`
 - [ ] `Object.isFrozen` `<T>(o: T): o is Readonly<T>`
-- [ ] `Reflect.get`
+- [x] `Reflect.get`
 - [ ] `document.getElementById` add generic
+- [ ] `Array.concat` concat\<K\>(...items: K[]): (T | K)[]
 
 ### Loose
 - [ ] `parseInt` allow number

@@ -142,5 +142,14 @@ declare global {
      */
     includes(searchElement: T): searchElement is T
     includes(searchElement: any): searchElement is T
+
+    /**
+     * Combines two or more arrays.
+     * This method returns a new array without modifying any existing arrays.
+     * @param items Additional arrays and/or items to add to the end of the array.
+     */
+    // concat(...items: (T)[]): T[]
+    // /** ggg */
+    // concat<K>(...items: (K | K[])[]): (T | K)[]
   }
 }
