@@ -5,12 +5,12 @@ specifiers:
   '@ziloen/eslint-config-format': ^0.0.83
   bumpp: ^8.2.1
   eslint: ^8.34.0
-  typed-query-selector: ^2.8.0
+  typed-query-selector: ^2.9.0
   typescript: ^4.9.5
 
 dependencies:
   bumpp: 8.2.1
-  typed-query-selector: 2.8.0
+  typed-query-selector: 2.9.0
   typescript: 4.9.5
 
 devDependencies:
@@ -2026,8 +2026,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /typed-query-selector/2.8.0:
-    resolution: {integrity: sha512-jo9NLGQ0b7sT9TK3mxzemATQqTb/uh8TRvcOK6WSwKNewALt3AA8q2m7cdpF/uUbd/cdixaBxCGe6fpzpEWbGw==}
+  /typed-query-selector/2.9.0:
+    resolution: {integrity: sha512-UVibdpOGRs/oEZeBqpLNGxTxRdvUPJAcwOnbKiutxYM4k50aoLPbvkz6vRsvr6xLx8BDibHWWGypOZCcn6+YpA==}
     dev: false
 
   /typescript/4.9.5:
