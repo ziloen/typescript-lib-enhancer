@@ -29,8 +29,8 @@
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@ziloen/eslint-config": "^0.0.85",
-    "@ziloen/eslint-config-format": "^0.0.85",
+    "@ziloen/eslint-config": "^0.0.86",
+    "@ziloen/eslint-config-format": "^0.0.86",
     "eslint": "^8.38.0"
   },
   "eslintConfig": {
