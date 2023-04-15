@@ -22,15 +22,10 @@ declare global {
      * @param o An object.
      * @param v A property name.
      */
-    hasOwn<T extends AnyObject, K extends KeyofUnion<T>>(o: T, v: K): o is ExtractByKeys<T, K>
-
-    /**
-     * If not object, always return false
-     * @param o Primitive non null value
-     * @param v A property name
-     */
-    hasOwn(o: string | number | bigint | symbol, v: string): false
-
+    hasOwn<T extends Record<keyof any, any>, K extends keyof any>(
+      o: T,
+      v: K
+    ): o is K extends KeyofUnion<T> ? ExtractByKeys<T, K> : T & { [P in K]: unknown }
 
 
     /**
