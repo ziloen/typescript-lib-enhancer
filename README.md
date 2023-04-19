@@ -47,6 +47,8 @@ if (Object.hasOwn(value, 'a')) {
 - [x] `Reflect.get`
 - [ ] `document.getElementById` add generic
 - [ ] `Array.concat` concat\<K\>(...items: K[]): (T | K)[]
+- [ ] `KeyboardEvent.key` type `string` -> `string & {}`
+- [ ] `Object.hasOwn` fix type error 
 
 ### Loose
 - [ ] `parseInt` allow number

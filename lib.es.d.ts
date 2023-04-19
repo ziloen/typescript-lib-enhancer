@@ -1,4 +1,4 @@
-import type { ExtractByKeys, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType } from './utils'
+import type { ExtractByKey, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType, ExtractAndRequiredByKey } from './utils'
 
 type ToStringTag =
   | "[object Array]"
@@ -25,7 +25,8 @@ declare global {
     hasOwn<T extends Record<keyof any, any>, K extends keyof any>(
       o: T,
       v: K
-    ): o is K extends KeyofUnion<T> ? ExtractByKeys<T, K> : T & { [P in K]: unknown }
+      // @ts-expect-error FIXME: i don't know why this is not working
+    ): o is K extends KeyofUnion<T> ? ExtractAndRequiredByKey<T, K> : T & { [P in K]: unknown }
 
 
     /**
@@ -111,7 +112,7 @@ declare global {
      * @param target Object that contains the property on itself or in its prototype chain.
      * @param propertyKey Name of the property.
      */
-    function has<T extends AnyObject, K extends KeyofUnion<T>>(target: T, propertyKey: K): target is ExtractByKeys<T, K>
+    function has<T extends AnyObject, K extends KeyofUnion<T>>(target: T, propertyKey: K): target is ExtractByKey<T, K>
 
 
 

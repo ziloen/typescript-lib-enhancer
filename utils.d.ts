@@ -10,12 +10,27 @@ type _ = any
  * type B = { a: _ } | { b: _ }
  * ```
  */
-export type ExtractByKeys<T, K extends keyof any> =
+export type ExtractByKey<T, K extends keyof any> =
   T extends infer R
   ? K extends keyof R
   ? R
   : never
   : never
+
+/** @internal */
+export type ExtractAndRequiredByKey<T, K extends keyof any> =
+  T extends infer R
+  ? K extends keyof R
+  ? RequiredByKey<R, K>
+  : never
+  : never
+
+
+/** @internal */
+export type RequiredByKey<T, K extends keyof T> = { [P in K]-?: T[P] } & Omit<
+  T,
+  K
+>
 
 /** @internal */
 export type Stringable = string | number | bigint | boolean | null | undefined
@@ -65,6 +80,7 @@ export type Split<
   ? Split<Rest, Separator, [...Result, First]>
   : [...Result, ...Str extends '' ? [] : [Str]]
 
+/** @internal */
 export type UnionToTuple<U, L = UnionLast<U>> = [U] extends [never] ? [] : [L, ...UnionToTuple<Exclude<U, L>>]
 
 
