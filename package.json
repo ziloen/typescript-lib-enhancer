@@ -25,13 +25,13 @@
   },
   "dependencies": {
     "bumpp": "^9.1.0",
-    "typed-query-selector": "^2.9.2",
+    "typed-query-selector": "^2.10.1",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
-    "@ziloen/eslint-config": "^0.0.86",
-    "@ziloen/eslint-config-format": "^0.0.86",
-    "eslint": "^8.38.0"
+    "@ziloen/eslint-config": "^0.0.89",
+    "@ziloen/eslint-config-format": "^0.0.89",
+    "eslint": "^8.40.0"
   },
   "eslintConfig": {
     "root": true,
