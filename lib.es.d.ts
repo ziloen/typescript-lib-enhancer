@@ -126,10 +126,14 @@ declare global {
     function get<T extends object, K extends keyof T>(target: T, propertyKey: K, receiver?: any): T[K]
   }
 
+
+
   interface Object {
     /** Returns a string representation of an object. */
     toString(): ToStringTag
   }
+
+
 
   interface Array<T> {
     /**
@@ -147,5 +151,18 @@ declare global {
     // concat(...items: (T)[]): T[]
     // /** ggg */
     // concat<K>(...items: (K | K[])[]): (T | K)[]
+  }
+
+
+
+  interface ArrayConstructor {
+    // @ts-expect-error FIXME: i don't know why this is not working
+    isArray<T>(arg: T): arg is (
+      T extends readonly unknown[]
+      ? readonly unknown[]
+      : T extends unknown[]
+      ? unknown[]
+      : never
+    )
   }
 }
