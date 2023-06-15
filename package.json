@@ -24,14 +24,14 @@
     "test": "tsc --noEmit"
   },
   "dependencies": {
-    "bumpp": "^9.1.0",
-    "typed-query-selector": "^2.10.1",
-    "typescript": "^5.0.4"
+    "bumpp": "^9.1.1",
+    "typed-query-selector": "^2.11.0",
+    "typescript": "^5.1.3"
   },
   "devDependencies": {
-    "@ziloen/eslint-config": "^0.0.89",
-    "@ziloen/eslint-config-format": "^0.0.89",
-    "eslint": "^8.40.0"
+    "@ziloen/eslint-config": "^0.0.94",
+    "@ziloen/eslint-config-format": "^0.0.94",
+    "eslint": "^8.42.0"
   },
   "eslintConfig": {
     "root": true,
