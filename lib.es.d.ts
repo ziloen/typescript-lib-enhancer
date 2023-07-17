@@ -1,16 +1,17 @@
-import type { ExtractByKey, KeyofUnion, ToString, AnyObject, Split, ValueOf, IterableType, ExtractAndRequiredByKey } from './utils'
+import type { IfAny, IfUnknown } from 'type-fest'
+import type { AnyObject, ExtractAndRequiredByKey, ExtractByKey, IterableType, KeyofUnion, Split, ToString } from './utils'
 
 type ToStringTag =
-  | "[object Array]"
-  | "[object BigInt]"
-  | "[object Boolean]"
-  | "[object Function]"
-  | "[object Null]"
-  | "[object Number]"
-  | "[object Object]"
-  | "[object String]"
-  | "[object Undefined]"
-  | (string & {})
+  | '[object Array]'
+  | '[object BigInt]'
+  | '[object Boolean]'
+  | '[object Function]'
+  | '[object Null]'
+  | '[object Number]'
+  | '[object Object]'
+  | '[object String]'
+  | '[object Undefined]'
+  | (string & Record<never, never>)
 // | "[object Date]"
 // | "[object ArrayBuffer]"
 // | "[object URL]" 
@@ -60,7 +61,6 @@ declare global {
      * @param entries An iterable object that contains key-value entries for properties and methods.
      */
     fromEntries<K extends PropertyKey, I extends Iterable<readonly [K, any]>, T extends IterableType<I> = IterableType<I>>(entries: I): { [Key in T[0]]: IterableType<I>[1] }
-
 
 
 
@@ -157,12 +157,6 @@ declare global {
 
   interface ArrayConstructor {
     // @ts-expect-error FIXME: i don't know why this is not working
-    isArray<T>(arg: T): arg is (
-      T extends readonly unknown[]
-      ? readonly unknown[]
-      : T extends unknown[]
-      ? unknown[]
-      : never
-    )
+    isArray<T>(arg: T): arg is IfAny<T, unknown[], IfUnknown<T, unknown[], T extends readonly any[] ? readonly any[] : T extends any[] ? any[] : never>>
   }
 }

@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-query-selector */
-import type{ Expect, Equal } from './utils'
+import type{ Equal, Expect } from './utils'
 
 
 
@@ -334,8 +334,4 @@ import type{ Expect, Equal } from './utils'
   } else {
     type TestCase = Expect<Equal<typeof testNotArr, string | number>>
   }
-
-
-  type A = unknown extends unknown[] ? true : false
-
 }
