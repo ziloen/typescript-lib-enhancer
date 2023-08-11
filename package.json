@@ -29,10 +29,10 @@
     "typescript": "^5.1.6"
   },
   "devDependencies": {
-    "@ziloen/eslint-config": "^0.0.97",
-    "@ziloen/eslint-config-format": "^0.0.97",
-    "eslint": "^8.45.0",
-    "type-fest": "^4.0.0"
+    "@ziloen/eslint-config": "^0.0.99",
+    "@ziloen/eslint-config-format": "^0.0.99",
+    "eslint": "^8.47.0",
+    "type-fest": "^4.2.0"
   },
   "eslintConfig": {
     "root": true,
