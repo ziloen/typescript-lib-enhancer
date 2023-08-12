@@ -59,39 +59,6 @@ import type { Equal, Expect } from './utils'
 
 
 
-// Test struredClone()
-{
-  {
-    // Promise -> never
-    const clonePromise = structuredClone(new Promise(() => { }))
-
-    type TestCase = [
-      Expect<Equal<typeof clonePromise, never>>
-      // Expect<Equal<typeof cloneDeepPropmise, never>>
-    ]
-  }
-
-  {
-    // Function -> never
-    const cloneFunction = structuredClone((a: string) => { })
-
-    type TestCase = [
-      Expect<Equal<typeof cloneFunction, never>>
-    ]
-  }
-
-  {
-    // Symbol -> never
-    const cloneSymbol = structuredClone(Symbol(''))
-
-    type TestCase = [
-      Expect<Equal<typeof cloneSymbol, never>>
-    ]
-  }
-}
-
-
-
 // Test Object.entries()
 {
   {

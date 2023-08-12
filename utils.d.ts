@@ -93,5 +93,31 @@ export type Equal<X, Y> =
 /** @internal */
 export type Expect<T extends true> = T
 
+/** @internal */
+type IsAny<T> = 0 extends 1 & T ? true : false
+
+/** @internal */
+export type IfAny<T, TypeIfAny = true, TypeIfNotAny = false> = (
+  IsAny<T> extends true ? TypeIfAny : TypeIfNotAny
+)
+
+/** @internal */
+type IsNull<T> = [T] extends [null] ? true : false
+
+/** @internal */
+type IsUnknown<T> = (
+  unknown extends T // `T` can be `unknown` or `any`
+  ? IsNull<T> extends false // `any` can be `null`, but `unknown` can't be
+  ? true
+  : false
+  : false
+)
+
+/** @internal */
+export type IfUnknown<T, TypeIfUnknown = true, TypeIfNotUnknown = false> = (
+  IsUnknown<T> extends true ? TypeIfUnknown : TypeIfNotUnknown
+)
+
+
 // is is possible a shortcut for Expect<Equal<X, Y>> ? ExpectEq<X, Y>
 // export type ExpectEq<X, Y, N extends boolean = Equal<X, Y>, R extends true = N extends true ? true : true> = N

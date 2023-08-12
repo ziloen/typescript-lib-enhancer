@@ -1,5 +1,14 @@
-import type { IfAny, IfUnknown } from 'type-fest'
-import type { AnyObject, ExtractAndRequiredByKey, ExtractByKey, IterableType, KeyofUnion, Split, ToString } from './utils'
+import type {
+  AnyObject,
+  ExtractAndRequiredByKey,
+  ExtractByKey,
+  IfAny,
+  IfUnknown,
+  IterableType,
+  KeyofUnion,
+  Split,
+  ToString,
+} from './utils'
 
 type ToStringTag =
   | '[object Array]'
@@ -157,6 +166,18 @@ declare global {
 
   interface ArrayConstructor {
     // @ts-expect-error FIXME: predicate type error but works
-    isArray<T>(arg: T): arg is IfAny<T, unknown[], IfUnknown<T, unknown[], T extends readonly any[] ? readonly any[] : T extends any[] ? any[] : never>>
+    isArray<T>(arg: T): arg is IfAny<
+      T,
+      unknown[],
+      IfUnknown<
+        T,
+        unknown[],
+        T extends readonly any[]
+        ? readonly any[]
+        : T extends any[]
+        ? any[]
+        : never
+      >
+    >
   }
 }
