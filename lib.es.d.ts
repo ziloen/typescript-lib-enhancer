@@ -26,7 +26,7 @@ declare global {
     hasOwn<T extends Record<keyof any, any>, K extends keyof any>(
       o: T,
       v: K
-      // @ts-expect-error FIXME: i don't know why this is not working
+      // @ts-expect-error FIXME: predicate type error but works
     ): o is K extends KeyofUnion<T> ? ExtractAndRequiredByKey<T, K> : T & { [P in K]: unknown }
 
 
@@ -156,7 +156,7 @@ declare global {
 
 
   interface ArrayConstructor {
-    // @ts-expect-error FIXME: i don't know why this is not working
+    // @ts-expect-error FIXME: predicate type error but works
     isArray<T>(arg: T): arg is IfAny<T, unknown[], IfUnknown<T, unknown[], T extends readonly any[] ? readonly any[] : T extends any[] ? any[] : never>>
   }
 }

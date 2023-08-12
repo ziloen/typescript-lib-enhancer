@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/prefer-query-selector */
-import type{ Equal, Expect } from './utils'
+import type { Equal, Expect } from './utils'
 
 
 
@@ -279,57 +279,61 @@ import type{ Equal, Expect } from './utils'
 // Test `Array.isArray`
 {
   const testConst = [1, 2, 3] as const
-
   if (Array.isArray(testConst)) {
+    // presever readonly array type
     type TestCase = Expect<Equal<typeof testConst, readonly [1, 2, 3]>>
   } else {
     type TestCase = Expect<Equal<typeof testConst, never>>
   }
 
   const testArr = [1, 2, 3]
-
   if (Array.isArray(testArr)) {
     type TestCase = Expect<Equal<typeof testArr, number[]>>
   } else {
     type TestCase = Expect<Equal<typeof testArr, never>>
   }
 
-  const b = '123' as string | string[]
-
-  if (Array.isArray(b)) {
-    type TestCase = Expect<Equal<typeof b, string[]>>
+  const testUnion1 = '123' as string | string[]
+  if (Array.isArray(testUnion1)) {
+    type TestCase = Expect<Equal<typeof testUnion1, string[]>>
   } else {
-    type TestCase = Expect<Equal<typeof b, string>>
+    type TestCase = Expect<Equal<typeof testUnion1, string>>
   }
 
-  const testUnion = '123' as string | string[] | number
-
-  if (Array.isArray(testUnion)) {
-    type TestCase = Expect<Equal<typeof testUnion, string[]>>
+  const testUnion2 = '123' as string | string[] | number
+  if (Array.isArray(testUnion2)) {
+    type TestCase = Expect<Equal<typeof testUnion2, string[]>>
   } else {
-    type TestCase = Expect<Equal<typeof testUnion, string | number>>
+    type TestCase = Expect<Equal<typeof testUnion2, string | number>>
+  }
+
+  const testUnion3 = '123' as string | string[] | number | number[]
+  if (Array.isArray(testUnion3)) {
+    type TestCase = Expect<Equal<typeof testUnion3, string[] | number[]>>
+  } else {
+    type TestCase = Expect<Equal<typeof testUnion3, string | number>>
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const testAny = '' as any
-
   if (Array.isArray(testAny)) {
+    // narrow any to unknown[] instead of any[]
     type TestCase = Expect<Equal<typeof testAny, unknown[]>>
   } else {
     type TestCase = Expect<Equal<typeof testAny, any>>
   }
 
   const testUnknown = '' as unknown
-
   if (Array.isArray(testUnknown)) {
+    // narrow unknown to unknown[] instead of any[]
     type TestCase = Expect<Equal<typeof testUnknown, unknown[]>>
   } else {
     type TestCase = Expect<Equal<typeof testUnknown, unknown>>
   }
 
   const testNotArr = '' as string | number
-
   if (Array.isArray(testNotArr)) {
+    // narrow to never if not array
     type TestCase = Expect<Equal<typeof testNotArr, never>>
   } else {
     type TestCase = Expect<Equal<typeof testNotArr, string | number>>
