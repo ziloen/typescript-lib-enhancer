@@ -15,8 +15,26 @@
     "lib.dom.d.ts",
     "lib.es.d.ts",
     "shim.d.ts",
-    "utils.d.ts"
+    "utils.d.ts",
+    "lib.dom.highlight.d.ts",
+    "lib.dom.view-transition.d.ts"
   ],
+  "exports": {
+    ".": {
+      "import": "./shim.d.ts",
+      "types": "./shim.d.ts"
+    },
+    "./view-transition": {
+      "import": "./lib.dom.view-transition.d.ts",
+      "types": "./lib.dom.view-transition.d.ts",
+      "default": "./lib.dom.view-transition.d.ts"
+    },
+    "./highlight": {
+      "import": "./lib.dom.highlight.d.ts",
+      "types": "./lib.dom.highlight.d.ts",
+      "default": "./lib.dom.highlight.d.ts"
+    }
+  },
   "scripts": {
     "dev": "tsc --noEmit --watch",
     "release": "bumpp package.json --commit --no-push && pnpm -r publish --access public",
@@ -25,14 +43,14 @@
   },
   "dependencies": {
     "bumpp": "^9.1.1",
+    "type-fest": "^4.2.0",
     "typed-query-selector": "^2.11.0",
     "typescript": "^5.1.6"
   },
   "devDependencies": {
     "@ziloen/eslint-config": "^0.0.99",
     "@ziloen/eslint-config-format": "^0.0.99",
-    "eslint": "^8.47.0",
-    "type-fest": "^4.2.0"
+    "eslint": "^8.47.0"
   },
   "eslintConfig": {
     "root": true,

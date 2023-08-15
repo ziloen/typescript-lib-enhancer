@@ -1,12 +1,10 @@
+import { IfAny, IfUnknown, Split } from 'type-fest'
 import type {
   AnyObject,
   ExtractAndRequiredByKey,
   ExtractByKey,
-  IfAny,
-  IfUnknown,
   IterableType,
   KeyofUnion,
-  Split,
   ToString,
 } from './utils'
 
@@ -103,7 +101,7 @@ declare global {
      * Returns an array of string split
      * @param s string
      */
-    values<T extends string>(s: T): Split<T>
+    values<T extends string>(s: T): Split<T, ''>
   }
 
   namespace Reflect {
