@@ -16,25 +16,9 @@
     "lib.es.d.ts",
     "shim.d.ts",
     "utils.d.ts",
-    "lib.dom.highlight.d.ts",
-    "lib.dom.view-transition.d.ts"
+    "highlight.d.ts",
+    "view-transition.d.ts"
   ],
-  "exports": {
-    ".": {
-      "import": "./shim.d.ts",
-      "types": "./shim.d.ts"
-    },
-    "./view-transition": {
-      "import": "./lib.dom.view-transition.d.ts",
-      "types": "./lib.dom.view-transition.d.ts",
-      "default": "./lib.dom.view-transition.d.ts"
-    },
-    "./highlight": {
-      "import": "./lib.dom.highlight.d.ts",
-      "types": "./lib.dom.highlight.d.ts",
-      "default": "./lib.dom.highlight.d.ts"
-    }
-  },
   "scripts": {
     "dev": "tsc --noEmit --watch",
     "release": "bumpp package.json --commit --no-push && pnpm -r publish --access public",
